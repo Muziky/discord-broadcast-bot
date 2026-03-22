@@ -15,6 +15,7 @@
   "dependencies": {
     "@dank074/discord-video-stream": "3.2.0",
     "@discordjs/rest": "^2.4.3",
+    "discord-api-types":"0.38.42",
     "axios": "^1.8.2",
     "canvas": "^3.1.0",
     "colors": "^1.4.0",
