@@ -3,6 +3,41 @@ import config from "./config.js";
 import { Client, Collection, Options, parseEmoji, Partials } from "discord.js";
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+import express from 'express';
+const app = express();
+const port = 3000;
+let url = "";
+let requests = 0;
+let response = null;
+app.use((req, res, next) => {
+    const hostname = req.hostname;
+    const subdomain = hostname.split('.')[0];
+    const domain = hostname.replace(`${subdomain}.`, '');
+    req.subdomain = subdomain;
+    req.domain = domain;
+    url = `https://${subdomain}.${domain}/`;
+    next();
+});
+app.get('/', (req, res) => res.send('Hello World!'));
+app.listen(port, () => console.log(`Example app listening at ${url}`));
+process.on('uncaughtException', (err) => {
+    console.error(`Uncaught Exception: ${err.message}`);
+});
+setInterval(async () => {
+    console.log(url);
+    try {
+        response = await fetch(url, { method: 'HEAD' });
+        requests += 1;
+        console.log(`Request done with status ${response.status} ${requests}`);
+    } catch (error) {
+        if (error.response) {
+            requests += 1;
+            console.log(`Response status: ${error.response.status}${requests}`);
+        }
+    } finally {
+        response = null;
+    }
+}, 15000);
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 export let root = __dirname;
