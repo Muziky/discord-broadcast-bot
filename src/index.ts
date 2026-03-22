@@ -3,6 +3,7 @@ import config from "./config.js";
 import { Client, Collection, Options, parseEmoji, Partials } from "discord.js";
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+/*
 import express from 'express';
 const app = express();
 const port = 3000;
@@ -38,6 +39,7 @@ setInterval(async () => {
         response = null;
     }
 }, 15000);
+*/
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 export let root = __dirname;
