@@ -11,7 +11,6 @@ export class CustomClient extends Client {
     cooldowns: any[] = [];
     newQuests: Collection<String, any> = new Collection();
     commands: Collection<String, any> = new Collection();
-    slashCommands: Collection<String, any> = new Collection();
     selectMenus: Collection<String, any> = new Collection();
     modals: Collection<String, any> = new Collection();
     contextMenus: Collection<String, any> = new Collection();
