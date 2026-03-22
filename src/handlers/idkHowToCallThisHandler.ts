@@ -12,7 +12,7 @@ export default {
 	 * Also, I'm sure this is the worst way to do this, but it works
 	 */
 	init: async function () {
-		const dirs = ["commands", "contextMenus", "modals", "selectMenus"];
+		const dirs = ["commands","contextMenus","modals", "selectMenus"];
 		for (const dir of dirs) {
 			await register(dir);
 		}
